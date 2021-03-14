@@ -1,5 +1,18 @@
+<app-blacklist-form (childSubmit)="submit($event)" [one]="one" [two]="two" [three]="three">
 
-<app-main-page>
+
+
+
+
+</app-blacklist-form>
+
+
+
+<app-edit-blacklist *ngIf="dialog" (childSubmit)='updateUser($event)' [user]="user">
+
+
+</app-edit-blacklist>
+<app-main-page [total]='total' [users]='users' (edit)='editUser($event)' (updatedState)="allList($event)" (del)='del($event)'>
 
     
 </app-main-page>

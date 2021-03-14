@@ -3,7 +3,6 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs'
 import {ApisService} from './apis.service'
 import {Router, ActivatedRoute} from '@angular/router'
-import jwt_decode from 'jwt-decode';
 import { AlertService } from './alert.service';
 
 @Injectable({providedIn: 'root'})
@@ -13,10 +12,10 @@ export class AuthService {
 
     constructor(private apis : ApisService, private router : Router ,private alerts:AlertService) {}
 
-    Login(auth) : Observable < any > {
+    Login(auth:any) : Observable < any > {
         return this
             .apis
-            .post(`/authenticate`, auth)
+            .post(`/users/login`, auth)
     }
 
     decodeToken(x : string) {

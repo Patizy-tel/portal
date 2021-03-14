@@ -1,0 +1,55 @@
+<clr-modal [(clrModalOpen)]="dialog">
+  <h3 class="modal-title">Add Black-List</h3>
+  <div class="modal-body container">
+      <form
+          clrStepper
+          [formGroup]="vendorForm"
+          (ngSubmit)="onSubmit()"
+          clrForm
+          clrLayout="vertical">
+
+          <clr-input-container>
+              <label>Name</label>
+              <input clrInput formControlName="name" required/>
+          </clr-input-container>
+          <clr-select-container>
+            <label>Type</label>
+            <select clrSelect formControlName="type" required>
+                <option disabled>Select Accouunt Type
+                </option>
+                <option value="bussiness">bussiness</option>
+                <option value="individual">individual</option>
+
+            </select>
+        </clr-select-container>
+          <clr-input-container>
+              <label>Instituion</label>
+              <input clrInput formControlName="institution" required/>
+          </clr-input-container>
+
+          <clr-input-container>
+              <label>account Manager</label>
+              <input type="text" clrInput formControlName="manager" required/>
+          </clr-input-container>
+
+          <clr-input-container>
+              <label>email</label>
+              <input clrInput  type="email" formControlName="email" required/>
+          </clr-input-container>
+          <clr-date-container>
+            <label>Date</label>
+            <input clrDate placeholder="Pick a date" formControlName="date"  />
+          </clr-date-container>
+
+         
+
+      <br/>
+      
+
+          <button type="submit" class="btn btn-success">submit</button>
+
+      </form>
+
+  </div>
+
+</clr-modal>

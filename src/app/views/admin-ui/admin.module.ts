@@ -9,6 +9,9 @@ import {MainPageComponent} from './main-page/main-page.component';
 import {HelperModule} from '../../helper/helper.module';
 import {LayoutComponent} from './layout/layout.component';
 
+import {BlacklistFormComponent} from  './main-page/blacklist-form/blacklist-form.component';
+import {EditBlacklistComponent} from './main-page/edit-blacklist/edit-blacklist.component'
+
 @NgModule({
     imports: [
 
@@ -22,9 +25,9 @@ import {LayoutComponent} from './layout/layout.component';
     ],
 
     declarations: [
-        MainPageComponent, LayoutComponent
+        MainPageComponent, LayoutComponent ,BlacklistFormComponent ,EditBlacklistComponent
     ],
-    exports: [MainPageComponent, LayoutComponent]
+    exports: [MainPageComponent, LayoutComponent ,BlacklistFormComponent ,EditBlacklistComponent]
 })
 
 

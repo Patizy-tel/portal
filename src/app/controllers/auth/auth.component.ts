@@ -25,19 +25,15 @@ export class AuthComponent implements OnInit {
 
         this.loading = true
 
-        this
-        .auth
-        .decodeToken("e.jwtToken")
 
-
-   /*     this
+       this
             .auth
             .Login(e)
             .subscribe((e) => {
 
                 this
                     .auth
-                    .decodeToken(e.jwtToken)
+                    .decodeToken(e.token)
 
             }, (x) => {
 
@@ -46,7 +42,7 @@ export class AuthComponent implements OnInit {
                     .error(x.error.message)
                 this.loading = false
 
-            })*/
+            })
 
     }
 

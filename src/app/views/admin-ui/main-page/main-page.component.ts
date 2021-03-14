@@ -1,5 +1,5 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ClrDatagridStateInterface } from '@clr/angular';
 
 
 @Component({
@@ -10,20 +10,22 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 export class MainPageComponent implements OnInit {
 
 
-  constructor() {
 
-   }
+    @Output() updatedState = new EventEmitter<ClrDatagridStateInterface>();
+    @Output()enable = new EventEmitter();
+    @Output()edit = new EventEmitter ();
+    @Output()del = new EventEmitter ();
 
-  ngOnInit() {
-
+    @Input() total :number
+    @Input()users ;
   
-
-
+    constructor() { }
+  
+    ngOnInit() {
+    }
   
   }
 
 
 
 
-
-}

@@ -5,10 +5,12 @@ import {AdminModule} from '../../views/admin-ui/admin.module'
 
 import {AdminRoute} from './admin-route.routing'
 import {DashboardComponent} from './dashboard/dashboard.component'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
     imports: [
-        CommonModule, AdminModule, ClarityModule, AdminRoute
+        CommonModule, AdminModule, ClarityModule, AdminRoute ,FormsModule ,ReactiveFormsModule ,RouterModule
     ],
     declarations: [
         DashboardComponent,
