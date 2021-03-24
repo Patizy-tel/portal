@@ -3,12 +3,13 @@ import {FormGroup, FormControl, Validators} from '@angular/forms';
 import {ClrLoadingState} from '@clr/angular';
 
 @Component({
-  selector: 'app-blacklist-form',
-  templateUrl: './blacklist-form.component.html',
-  styleUrls: ['./blacklist-form.component.scss']
+  selector: 'app-todo-form',
+  templateUrl: './todo-form.component.html',
+  styleUrls: ['./todo-form.component.scss']
 })
-export class BlacklistFormComponent implements OnInit {
+export class TodoFormComponent implements OnInit {
 
+  
   @Input()errorMessage : Error;
   @Input()dialog : Boolean = false
   @Input()btnState$ : ClrLoadingState;
@@ -27,10 +28,8 @@ export class BlacklistFormComponent implements OnInit {
   private createProjectForm() {
       this.vendorForm = new FormGroup({
           name: new FormControl('', Validators.required),
-          type: new FormControl('', Validators.required),
-          email: new FormControl('', Validators.required),
-          institution: new FormControl('', Validators.required),
-          manager: new FormControl('', Validators.required),
+          description: new FormControl('', Validators.required),
+          
           date: new FormControl('', Validators.required),
        
       });

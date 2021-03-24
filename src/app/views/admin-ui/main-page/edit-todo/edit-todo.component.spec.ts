@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { BlacklistFormComponent } from './blacklist-form.component';
+import { EditTodoComponent } from './edit-todo.component';
 
-describe('BlacklistFormComponent', () => {
-  let component: BlacklistFormComponent;
-  let fixture: ComponentFixture<BlacklistFormComponent>;
+describe('EditTodoComponent', () => {
+  let component: EditTodoComponent;
+  let fixture: ComponentFixture<EditTodoComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BlacklistFormComponent ]
+      declarations: [ EditTodoComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(BlacklistFormComponent);
+    fixture = TestBed.createComponent(EditTodoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

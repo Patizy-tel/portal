@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ClrDatagridStateInterface } from '@clr/angular';
 import { Utilities } from 'src/app/models';
-import { AlertService, BlacklistService } from 'src/app/services';
+import { AlertService, TodoService } from 'src/app/services';
 
 @Component({
   selector: 'app-dashboard',
@@ -16,22 +16,22 @@ export class DashboardComponent implements OnInit {
   public users : [];
   user: any;
   dialog: boolean;
-  constructor(private  blacklist : BlacklistService ,private alert:AlertService) { }
+  constructor(private  todos : TodoService ,private alert:AlertService) { }
 
   ngOnInit() {
 
     this.allList({});
-    this.stats()
+ 
 
 
   }
 
   submit(x){
-    this.blacklist.postBlack(x).subscribe(resp=>{
+    this.todos.addTodo(x).subscribe(resp=>{
       this.alert.success('Added ✔👍');
 
       this.allList({});
-      this.stats()
+     
     })
 
 
@@ -40,9 +40,9 @@ export class DashboardComponent implements OnInit {
 
 
   del(x){
-    this.blacklist.delBlack(x._id).subscribe(resp=>{
+    this.todos.delTodo(x._id).subscribe(resp=>{
       this.alert.success('Deleted ✔❌❌');
-      this.stats();
+    
       this.allList({})
     })
 
@@ -60,11 +60,11 @@ updateUser(x){
 
   console.log(x)
     this
-        .blacklist
-        .updateUser(x ,x._id)
+        .todos
+        .updateTodo(x._id ,x)
         .subscribe((resp : any) => {
           this.allList({});
-          this.stats()
+         
             this
                 .alert
                 .success(resp.message)
@@ -82,38 +82,34 @@ updateUser(x){
 
 
 
-public async stats (){
+changeStatus(x:any){
 
-  await this.blacklist.buss().subscribe((resp:any)=>{
+  console.log(x)
+    this
+        .todos
+        .changeStatusTodo(x._id ,!x.status)
+        .subscribe((resp : any) => {
+          this.allList({});
+         
+            this
+                .alert
+                .success(resp.message)
 
+        }, (err) => {
 
-
-    this.two = resp.totalElements
-  });
-  await this.blacklist.indivi().subscribe((resp:any)=>{
-
-
-    this.three = resp.totalElements
-
-
-  });
-  await this.blacklist.ttb().subscribe((resp:any)=>{
-
-
-
-    this.one =resp.totalElements
-  });
-
-
-
+            this
+                .alert
+                .error(err.error.message)
+        })
 
 
 
 }
 
+
   public allList(state:ClrDatagridStateInterface){
     
-    this.blacklist.getBlack(Utilities.formatDatagridState(state, state.page
+    this.todos.getAll(Utilities.formatDatagridState(state, state.page
       ? state.page.from / state.page.size
       : 0)).subscribe((resp:any) =>{
 
@@ -123,4 +119,19 @@ public async stats (){
         this.users = resp.content
       })
   }
-}
+
+
+
+
+delAll(){
+
+  this.todos.deleteAll().subscribe(resp=>{
+
+
+    this.alert.success('Deleted Evrything');
+    this.allList({})
+  })
+
+
+
+}}

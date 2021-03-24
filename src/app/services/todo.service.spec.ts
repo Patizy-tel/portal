@@ -1,16 +1,16 @@
 /* tslint:disable:no-unused-variable */
 
 import { TestBed, async, inject } from '@angular/core/testing';
-import { BlacklistService } from './blacklist.service';
+import { TodoService } from './todo.service';
 
-describe('Service: Blacklist', () => {
+describe('Service: Todo', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [BlacklistService]
+      providers: [TodoService]
     });
   });
 
-  it('should ...', inject([BlacklistService], (service: BlacklistService) => {
+  it('should ...', inject([TodoService], (service: TodoService) => {
     expect(service).toBeTruthy();
   }));
 });

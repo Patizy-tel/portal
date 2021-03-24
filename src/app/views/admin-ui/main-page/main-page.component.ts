@@ -15,6 +15,9 @@ export class MainPageComponent implements OnInit {
     @Output()enable = new EventEmitter();
     @Output()edit = new EventEmitter ();
     @Output()del = new EventEmitter ();
+    @Output()delAll = new EventEmitter ();
+    @Output()changeStatus = new EventEmitter ();
+
 
     @Input() total :number
     @Input()users ;

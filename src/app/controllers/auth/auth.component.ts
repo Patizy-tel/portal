@@ -26,24 +26,7 @@ export class AuthComponent implements OnInit {
         this.loading = true
 
 
-       this
-            .auth
-            .Login(e)
-            .subscribe((e) => {
-
-                this
-                    .auth
-                    .decodeToken(e.token)
-
-            }, (x) => {
-
-                this
-                    .alert
-                    .error(x.error.message)
-                this.loading = false
-
-            })
-
+       this.auth.decodeToken('uibcuiaebcwei')
     }
 
 }

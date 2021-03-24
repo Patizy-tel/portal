@@ -2,24 +2,25 @@
 
 <div class="limit-height">
 
+  <button class="btn btn-danger" (click)="delAll.emit($event)">Delete All</button>
+
   <clr-datagrid (clrDgRefresh)="updatedState.emit($event)">
     <clr-dg-column>ID</clr-dg-column>
     <clr-dg-column [clrDgField]="'name'">Name</clr-dg-column>
-    <clr-dg-column [clrDgField]="'type'">Accouunt Type</clr-dg-column>
-    <clr-dg-column [clrDgField]="'institution'">institution</clr-dg-column>
-    <clr-dg-column [clrDgField]="'manager'">Accouunt Manager</clr-dg-column>
-    <clr-dg-column [clrDgField]="'email'">Email</clr-dg-column>
+    <clr-dg-column [clrDgField]="'description'">description</clr-dg-column>
+    <clr-dg-column [clrDgField]="'status'">Status</clr-dg-column>
+ 
 
-    <clr-dg-column [clrDgField]="'date'">Updated Date</clr-dg-column>
+    <clr-dg-column [clrDgField]="'date'"> Date</clr-dg-column>
 
     <clr-dg-row *clrDgItems="let user of users">
       <clr-dg-cell>{{user._id}}</clr-dg-cell>
       <clr-dg-cell>{{user.name}}</clr-dg-cell>
-      <clr-dg-cell>{{user.type}}</clr-dg-cell>
-      <clr-dg-cell>{{user.institution}}</clr-dg-cell>
-      <clr-dg-cell>{{user.manager}}</clr-dg-cell>
-      <clr-dg-cell>{{user.email}}</clr-dg-cell>
+      <clr-dg-cell>{{user.description}}</clr-dg-cell>
+      <clr-dg-cell *ngIf="user.status == true" style="background-color: green;font-size: 20px;  color: aliceblue;">Completed</clr-dg-cell>
 
+      <clr-dg-cell *ngIf="user.status == false" style="background-color: rgb(170, 32, 8);  font-size: 20px;  color: aliceblue;">Pending</clr-dg-cell>
+      
       <clr-dg-cell>{{user.date | date:'short'}}</clr-dg-cell>
 
 
@@ -30,6 +31,11 @@
           Update
       </button>
 
+
+      
+      <button class="action-item" (click)="changeStatus.emit(user)">
+        Change Status
+    </button>
 
       <button class="action-item" (click)="del.emit(user)">
         Delete
@@ -45,7 +51,7 @@
 
     <clr-dg-footer *ngIf="total > 0">
       {{ pagination.firstItem + 1 }} - {{ pagination.lastItem + 1 }} of
-      {{ pagination.totalItems }} Users
+      {{ pagination.totalItems }} Todos
       <clr-dg-pagination
         #pagination
         [clrDgTotalItems]="total"
